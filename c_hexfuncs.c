@@ -13,7 +13,12 @@ long hex_read(char data_buf[]){
 
 // Write given nul-terminated string to standard output.
 void hex_write_string(const char s[]){
-    write(STDOUT_FILENO, s, 16);
+    int size = 0;
+    while(s[size] != '\0'){
+        size++;
+    }
+    size++;
+    write(STDOUT_FILENO, s, size);
 }
 
 // Format a long value as an offset string consisting of exactly 8
