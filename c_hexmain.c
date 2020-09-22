@@ -4,6 +4,7 @@
 
 
 int main(void) {
+    char test[4] = "test";
     long a = hex_read("aa");
    
 

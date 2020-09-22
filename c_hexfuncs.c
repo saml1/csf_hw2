@@ -6,14 +6,14 @@
 // Read up to 16 bytes from standard input into data_buf.
 // Returns the number of characters read.
 long hex_read(char data_buf[]){
-    long num_bytes = read(0, data_buf, 16);
+    long num_bytes = read(STDIN_FILENO, data_buf, 16);
     return num_bytes;
 
 }
 
 // Write given nul-terminated string to standard output.
 void hex_write_string(const char s[]){
-    write(0, s, 16);
+    write(STDOUT_FILENO, s, 16);
 }
 
 // Format a long value as an offset string consisting of exactly 8
