@@ -4,8 +4,9 @@
 
 
 int main(void) {
-    char test[4] = "test";
-    long a = hex_read("aa");
+    char * test = (char *) malloc(4*sizeof(char));
+    long a = hex_read(test);
+    hex_write_string(test);
    
 
 }
