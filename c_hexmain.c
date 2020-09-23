@@ -20,7 +20,7 @@ int main(void) {
                 hex_write_string(byte_in_hex);
                 hex_write_string(" ");
             } else{
-                hex_format_byte_as_hex("   ");
+                hex_write_string("   ");
             }
         }
         chars_read = hex_read(buf_string);
