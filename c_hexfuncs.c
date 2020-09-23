@@ -40,7 +40,7 @@ void hex_format_offset(long offset, char sbuf[]){
 // of two hex digits.  The string is stored in sbuf.
 void hex_format_byte_as_hex(long byteval, char sbuf[]){
     for(int i = 0; i < 2; i++){
-        int digit = (offset >> 4*i)&15;
+        int digit = (byteval >> 4*i)&15;
         if(digit >=0 && digit <=9){
             sbuf[7-i] = (char) digit + 48;
         }else{
