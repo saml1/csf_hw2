@@ -55,6 +55,9 @@ void hex_format_byte_as_hex(long byteval, char sbuf[]){
 // unmodified.  If byteval is not a printable character, then the
 // ASCII code for '.' should be returned.
 long hex_to_printable(long byteval){
-    long a = 1;
-    return a;
+    if(byteval >= 32 && byteval <= 126){
+        return byteval;
+    }else{
+        return 46;
+    }
 }
