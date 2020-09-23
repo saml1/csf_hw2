@@ -22,10 +22,10 @@ int main(void) {
             } else{
                 hex_write_string("   ");
             }
-            hex_write_string("\n");
         }
         chars_read = hex_read(buf_string);
         offset_count++;
+        hex_write_string("\n");
     }
 
 }
