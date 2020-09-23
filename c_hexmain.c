@@ -4,8 +4,8 @@
 
 
 int main(void) {
-    char [16] buf_string; //string from std in
-    char [8] buf_offset; //string of offset
+    char buf_string[16]; //string from std in
+    char buf_offset[8]; //string of offset
     long offset_count = 0;
     while(hex_read(buf_string) > 0){ //while something is getting read in
         hex_format_offset(offset_count, buf_offset);
