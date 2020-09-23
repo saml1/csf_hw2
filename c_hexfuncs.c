@@ -25,7 +25,14 @@ void hex_write_string(const char s[]){
 // hex digits.  The formatted offset is stored in sbuf, which must
 // have enough room for a string of length 8.
 void hex_format_offset(long offset, char sbuf[]){
-
+    for(int i = 0, i < 8; i++){
+        int digit = (offset >> 4*i);
+        if(digit >=0 && digit <=9){
+            sbuf[7-i] = (char) digit + 48;
+        }else{
+            sbuf[7-i] = (char) digit + 87;
+        }
+    }
 }
 
 // Format a byte value (in the range 0-255) as string consisting
