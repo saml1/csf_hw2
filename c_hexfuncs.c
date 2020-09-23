@@ -42,9 +42,9 @@ void hex_format_byte_as_hex(long byteval, char sbuf[]){
     for(int i = 0; i < 2; i++){
         int digit = (byteval >> 4*i)&15;
         if(digit >=0 && digit <=9){
-            sbuf[7-i] = (char) digit + 48;
+            sbuf[1-i] = (char) digit + 48;
         }else{
-            sbuf[7-i] = (char) digit + 87;
+            sbuf[1-i] = (char) digit + 87;
         }
         sbuf[2] = '\0';
     }
