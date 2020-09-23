@@ -10,6 +10,8 @@ int main(void) {
     while(hex_read(buf_string) > 0){ //while something is getting read in
         hex_format_offset(offset_count, buf_offset);
         hex_write_string(buf_offset);
+        hex_write_string(": ");
+        offset_count++;
     }
 
 }
