@@ -26,7 +26,7 @@ void hex_write_string(const char s[]){
 // have enough room for a string of length 8.
 void hex_format_offset(long offset, char sbuf[]){
     for(int i = 0; i < 8; i++){
-        int digit = (offset >> 4*i);
+        int digit = (offset >> 4*i)&15;
         if(digit >=0 && digit <=9){
             sbuf[7-i] = (char) digit + 48;
         }else{
