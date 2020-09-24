@@ -32,7 +32,7 @@ int main(void) {
         chars_read = hex_read(buf_string);
         offset_count+=16;
         hex_write_string("\n");
-        printf("chars_read = %ld\n", chars_read);
+        //printf("chars_read = %ld\n", chars_read);
     }
 
 }
