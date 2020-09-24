@@ -26,7 +26,7 @@ int main(void) {
             }
         }
         for(int i = 0; i < chars_read; i++){
-            buf_string[i] = hex_to_printable(buf_string[i]);
+            //buf_string[i] = hex_to_printable(buf_string[i]);
         }
         hex_write_string(buf_string);
         chars_read = hex_read(buf_string);
