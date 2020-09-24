@@ -6,7 +6,7 @@
 
 int main(void) {
     char buf_string[16]; //string from std in
-    char buf_offset[8]; //string of offset
+    char buf_offset[9]; //string of offset
     char byte_in_hex[3]; //string of hex value of char
     long offset_count = 0;
     long chars_read = 0;
