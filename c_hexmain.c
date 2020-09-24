@@ -24,6 +24,7 @@ int main(void) {
                 hex_write_string("   ");
             }
         }
+        hex_write_string(buf_string);
         chars_read = hex_read(buf_string);
         offset_count+=16;
         hex_write_string("\n");
