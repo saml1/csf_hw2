@@ -17,7 +17,8 @@ int main(void) {
         hex_write_string(": ");
         for(int i = 0; i < 16; i++){
             if( i < chars_read){
-                hex_format_byte_as_hex(hex_to_printable((long) buf_string[i]), byte_in_hex);
+                //hex_format_byte_as_hex(hex_to_printable((long) buf_string[i]), byte_in_hex);
+                hex_format_byte_as_hex(buf_string[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 hex_write_string(" ");
             } else{
