@@ -13,6 +13,7 @@ int main(void) {
     chars_read = hex_read(buf_string);//stores input in buf_string and records #bytes in chars_read;
     //printf("buf_string[0]: %c\n", buf_string[0]);//correct val here
     while(chars_read > 0){ //while something is getting read in
+        printf("buf_string: %s\n", buf_string);
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
