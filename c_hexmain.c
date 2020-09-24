@@ -16,7 +16,8 @@ int main(void) {
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
-        printf("buf_string[0]: %c\n", buf_string[0]);
+        //printf("buf_string[0]: %c\n", buf_string[0]);
+        printf("buf_string: %s\n", buf_string);
         for(int i = 0; i < 16; i++){
             if( i < chars_read){
                 //printf("buf_string[0]: %c\n", buf_string[0]);//incorrect val here
