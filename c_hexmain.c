@@ -18,6 +18,7 @@ int main(void) {
         hex_write_string(": ");
         for(int i = 0; i < 16; i++){
             if( i < chars_read){
+                printf("buf_string[0]: %c\n", buf_string[0]);
                 hex_format_byte_as_hex(buf_string[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 //printf("byte_in_hex: %s\n", byte_in_hex);
