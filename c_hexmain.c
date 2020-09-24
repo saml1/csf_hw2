@@ -1,6 +1,7 @@
 // C implementation of hexdump main function
 
 #include "hexfuncs.h"  // this is the only header file which may be included!
+#include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
 
 
 int main(void) {
