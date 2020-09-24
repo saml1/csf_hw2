@@ -11,7 +11,7 @@ int main(void) {
     long offset_count = 0;
     long chars_read = 0;
     chars_read = hex_read(buf_string);//stores input in buf_string and records #bytes in chars_read;
-    printf("buf_string[0]: %c\n", buf_string[0]);//correct val here
+    //printf("buf_string[0]: %c\n", buf_string[0]);//correct val here
     while(chars_read > 0){ //while something is getting read in
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
@@ -19,7 +19,7 @@ int main(void) {
         printf("buf_string[0]: %c\n", buf_string[0]);
         for(int i = 0; i < 16; i++){
             if( i < chars_read){
-                printf("buf_string[0]: %c\n", buf_string[0]);//incorrect val here
+                //printf("buf_string[0]: %c\n", buf_string[0]);//incorrect val here
                 hex_format_byte_as_hex(buf_string[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 //printf("byte_in_hex: %s\n", byte_in_hex);
