@@ -14,7 +14,7 @@ int main(void) {
     //printf("buf_string[0]: %c\n", buf_string[0]);//correct val here
     while(chars_read > 0){ //while something is getting read in
         printf("buf_string1: %s\n", buf_string);
-        //hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
+        hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset **this is screwing up buf_string**
         printf("buf_string2: %s\n", buf_string);
         hex_write_string(buf_offset); //printing offset
         //printf("buf_string3: %s\n", buf_string);

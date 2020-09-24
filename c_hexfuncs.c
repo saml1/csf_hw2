@@ -32,7 +32,7 @@ void hex_format_offset(long offset, char sbuf[]){
         }else{
             sbuf[7-i] = (char) digit + 87;
         }
-        sbuf[8] = '\0';
+        //sbuf[8] = '\0';
     }
 }
 
