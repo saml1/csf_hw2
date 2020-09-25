@@ -12,7 +12,7 @@ int main(void) {
     long chars_read = 0;
     chars_read = hex_read(buf_string);//stores input in buf_string and records #bytes in chars_read;
     while(chars_read > 0){ //while something is getting read in
-        hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset **this is screwing up buf_string**
+        hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
         for(int i = 0; i < 16; i++){
@@ -25,6 +25,7 @@ int main(void) {
                 hex_write_string("   ");
             }
         }
+        hex_write_string(" ");
         for(int i = 0; i < chars_read; i++){//***this prob has something to do with the problem of not having the period at the end-look at where you should put it
             buf_string[i] = hex_to_printable(buf_string[i]);
         }

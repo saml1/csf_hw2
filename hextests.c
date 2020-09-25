@@ -52,19 +52,15 @@ void testFormatOffset(TestObjs *objs) {
   ASSERT(0 == strcmp(buf, "00000001"));
 
   hex_format_offset(12345L, buf);
-  /*printf("\n");
-  for(int i = 0; i < 8; i++){
-      printf("%c", buf[i]);
-    }
-  printf("\n");*/
   ASSERT(0 == strcmp(buf, "00003039"));
 }
 
 void testFormatByteAsHex(TestObjs *objs) {
   char buf[16];
   hex_format_byte_as_hex(objs->test_data_1[0], buf);
-  printf("buff: %s\n", buf);
   ASSERT(0 == strcmp(buf, "48"));
+  hex_format_byte_as_hex(objs->test_data_1[1], buf);
+  ASSERT(0 == strcmp(buf, "65"));
 }
 
 void testHexToPrintable(TestObjs *objs) {
