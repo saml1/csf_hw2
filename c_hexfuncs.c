@@ -10,13 +10,6 @@ long hex_read(char data_buf[]){
     return num_bytes;
 
 }
-// Read up to n bytes from standard input into data_buf.
-// Returns the number of characters read.
-long hex_read_nbytes(char data_buf[], size_t n){
-    long num_bytes = read(STDIN_FILENO, data_buf+n, 16 - n);
-    return num_bytes;
-
-}
 
 // Write given nul-terminated string to standard output.
 void hex_write_string(const char s[]){
