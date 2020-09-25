@@ -25,8 +25,8 @@ int main(void) {
                 hex_write_string("   ");
             }
         }
-        for(int i = 0; i < chars_read; i++){
-            //buf_string[i] = hex_to_printable(buf_string[i]);
+        for(int i = 0; i < chars_read; i++){//***this prob has something to do with the problem of not having the period at the end-look at where you should put it
+            buf_string[i] = hex_to_printable(buf_string[i]);
         }
         buf_string[chars_read] = '\0';
         hex_write_string(buf_string);
