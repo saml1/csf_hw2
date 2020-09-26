@@ -31,11 +31,11 @@ int main(void) {
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             chars_read_total += chars_read_next;
             for(int i = 0; i < chars_read_next; i++){
-                if(i+chars_read > 15){
+                if(i+chars_read_total-chars_read_next > 15){
                     overflow_element = i;
                     break;
                 }
-                buf_string_final[i+chars_read_total] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
+                buf_string_final[i+chars_read_total-chars_read_next] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
             }
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
