@@ -48,10 +48,6 @@ int main(void) {
             }
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
-        if(chars_read_next == 0){
-            //hex_write_string("\n");
-            break;
-        }
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
@@ -70,6 +66,10 @@ int main(void) {
         }
         buf_string_final[16] = '\0';
         hex_write_string(buf_string_final);
+        if(chars_read_next == 0){
+            hex_write_string("\n");
+            break;
+        }
         chars_read = hex_read(buf_string);
         offset_count+=16;
         hex_write_string("\n");
