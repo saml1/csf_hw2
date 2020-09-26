@@ -11,6 +11,7 @@ long hex_read(char data_buf[]){
 
 }
 
+
 // Write given nul-terminated string to standard output.
 void hex_write_string(const char s[]){
     int size = 0;
