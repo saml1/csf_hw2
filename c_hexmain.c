@@ -65,9 +65,13 @@ int main(void) {
     hex_write_string(buf_offset); //printing offset
     hex_write_string(": ");
     for(int i = overflow_element; i < 16; i++){
-        hex_format_byte_as_hex(buf_string_next[i], byte_in_hex);
-        hex_write_string(byte_in_hex);
-        hex_write_string(" ");
+        if(i < chars_read_next){
+            hex_format_byte_as_hex(buf_string_next[i], byte_in_hex);
+            hex_write_string(byte_in_hex);
+            hex_write_string(" ");
+        }else{
+            hex_write_string("   ");
+        }
     }
     hex_write_string(" ");
     for(int i = overflow_element; i < 16; i++){
