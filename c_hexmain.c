@@ -85,5 +85,6 @@ int main(void) {
     }
     buf_string_end[chars_read_next-overflow_element] = '\0';
     hex_write_string(buf_string_end);
+    hex_write_string("\n");
 }
 
