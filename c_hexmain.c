@@ -20,6 +20,8 @@ int main(void) {
     while(chars_read != 0){
         if(overflow_element!= -1){
             chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
+        }else{
+            chars_read_total = chars_read + chars_read_next;
         }
         if(overflow_element != -1){ //not on first loop
             for(int i = overflow_element; i < chars_read_next; i++){//storing prev overflow vals
