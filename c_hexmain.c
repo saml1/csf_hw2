@@ -74,7 +74,7 @@ int main(void) {
         }
     }
     hex_write_string(" ");
-    for(int i = overflow_element; i < 16; i++){
+    for(int i = overflow_element; i < chars_read_next; i++){
         buf_string_next[i] = hex_to_printable(buf_string_next[i]);
     }
     buf_string_next[chars_read_next] = '\0';
