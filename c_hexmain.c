@@ -6,7 +6,7 @@
 
 int main(void) {
     char buf_string[17]; //string from std in
-    char buf_string_next[16];
+    char buf_string_next[17];
     char buf_string_final[17]; //string from std in
     char buf_offset[9]; //string of offset
     char byte_in_hex[3]; //string of hex value of char
@@ -61,5 +61,19 @@ int main(void) {
         offset_count+=16;
         hex_write_string("\n");
     }
+    hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
+    hex_write_string(buf_offset); //printing offset
+    hex_write_string(": ");
+    for(int i = overflow_element; i < 16; i++){
+        hex_format_byte_as_hex(buf_string_next[i], byte_in_hex);
+        hex_write_string(byte_in_hex);
+        hex_write_string(" ");
+    }
+    hex_write_string(" ");
+    for(int i = overflow_element; i < 16; i++){
+        buf_string_next[i] = hex_to_printable(buf_string_next[i]);
+    }
+    buf_string_next[16] = '\0';
+    hex_write_string(buf_string_next);
 }
 
