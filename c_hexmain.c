@@ -77,11 +77,12 @@ int main(void) {
     for(int i = overflow_element; i < 16; i++){
         buf_string_next[i] = hex_to_printable(buf_string_next[i]);
     }
+    printf("buf_string_next: %s\n", buf_string_next);
     char buf_string_end[chars_read_next-overflow_element];
     for(int i = overflow_element; i < chars_read_next; i++){
         buf_string_end[i-overflow_element] = buf_string_next[i];
     }
     buf_string_end[chars_read_next] = '\0';
-    hex_write_string(buf_string_next);
+    hex_write_string(buf_string_end);
 }
 
