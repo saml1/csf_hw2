@@ -56,9 +56,9 @@ int main(void) {
         }
         buf_string_final[16] = '\0';
         hex_write_string(buf_string_final);
+        chars_read = hex_read(buf_string);
         offset_count+=16;
         hex_write_string("\n");
-        chars_read = hex_read(buf_string);
     }
 }
 
