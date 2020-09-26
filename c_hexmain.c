@@ -15,7 +15,7 @@ int main(void) {
     long chars_read_next = 0;
     long chars_read_total = 0;
     int overflow_element = 0;
-    chars_read = hex_read(buf_string); //stores input in buf_string and records #bytes in chars_read;
+    chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
     while(chars_read != 0){
         chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
         if(overflow_element != 0){ //not on first loop
@@ -34,7 +34,7 @@ int main(void) {
                     overflow_element = i;
                     break;
                 }
-                buf_string[i+chars_read] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
+                buf_string_final[i+chars_read] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
             }
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
@@ -43,7 +43,7 @@ int main(void) {
         hex_write_string(": ");
         for(int i = 0; i < 16; i++){ //printing hex vals of buf_string
             if(i < chars_read_total){
-                hex_format_byte_as_hex(buf_string[i], byte_in_hex);
+                hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 hex_write_string(" ");
             }else{
@@ -52,10 +52,10 @@ int main(void) {
         }
         hex_write_string(" ");
         for(int i = 0; i < 16; i++){//making all vals good for printing
-            buf_string[i] = hex_to_printable(buf_string[i]);
+            buf_string_final[i] = hex_to_printable(buf_string_final[i]);
         }
-        buf_string[16] = '\0';
-        hex_write_string(buf_string);
+        buf_string_final[16] = '\0';
+        hex_write_string(buf_string_final);
         offset_count+=16;
         hex_write_string("\n");
         chars_read = hex_read(buf_string);
