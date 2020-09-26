@@ -18,7 +18,9 @@ int main(void) {
     chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
     //printf("chars_read")
     while(chars_read != 0){
-        chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
+        if(overflow_element!= -1){
+            chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
+        }
         if(overflow_element != -1){ //not on first loop
             for(int i = overflow_element; i < chars_read_next; i++){//storing prev overflow vals
                 buf_string_final[i-overflow_element] = buf_string_next[i];
@@ -30,11 +32,11 @@ int main(void) {
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             chars_read_total += chars_read_next;
-            buf_string_next[chars_read_next] = '\0';
+            //buf_string_next[chars_read_next] = '\0';
             for(int i = 0; i < chars_read_next; i++){
                 if(i+chars_read_total-chars_read_next > 15){
                     overflow_element = i;
-                    buf_string_final[16] = '\0';
+                    //buf_string_final[16] = '\0';
                     break;
                 }
                 buf_string_final[i+chars_read_total-chars_read_next] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
@@ -44,7 +46,7 @@ int main(void) {
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
-        for(int i = 0; i < 16; i++){ //printing hex vals of buf_string
+        for(int i = 0; i < 16; i++){ //printing hex vals of buf_string_final
             if(i < chars_read_total){
                 hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
