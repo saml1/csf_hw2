@@ -18,14 +18,14 @@ int main(void) {
     chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
     while(chars_read != 0){
         chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
-        if(overflow_element != 0){ //not on first loop
+        //if(overflow_element != 0){ //not on first loop
             for(int i = overflow_element; i < chars_read_next; i++){//storing prev overflow vals
                 buf_string_final[i-overflow_element] = buf_string_next[i];
             }
             for(int i = overflow_element; i < chars_read_next; i++){//storing new chars in buf_string_final
                 buf_string_final[i] = buf_string[i-overflow_element];
             }
-        }
+        //}
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             chars_read_total += chars_read_next;
