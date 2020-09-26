@@ -64,7 +64,7 @@ int main(void) {
     hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
     hex_write_string(buf_offset); //printing offset
     hex_write_string(": ");
-    for(int i = overflow_element; i < 16; i++){
+    for(int i = overflow_element; i < 16+overflow_element; i++){
         if(i < chars_read_next){
             hex_format_byte_as_hex(buf_string_next[i], byte_in_hex);
             hex_write_string(byte_in_hex);
