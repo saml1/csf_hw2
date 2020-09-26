@@ -33,6 +33,9 @@ int main(void) {
         }
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
+            if(chars_read_next == 0){
+                break;
+            }
             chars_read_total += chars_read_next;
             //buf_string_next[chars_read_next] = '\0';
             for(int i = 0; i < chars_read_next; i++){
