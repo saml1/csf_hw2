@@ -16,6 +16,7 @@ int main(void) {
     long chars_read_total = 0;
     int overflow_element = 0;
     chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
+    //printf("chars_read")
     while(chars_read != 0){
         chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
         //if(overflow_element != 0){ //not on first loop
@@ -34,7 +35,7 @@ int main(void) {
                     overflow_element = i;
                     break;
                 }
-                buf_string_final[i+chars_read_total] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
+                buf_string_final[i+chars_read] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
             }
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
