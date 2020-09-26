@@ -30,9 +30,11 @@ int main(void) {
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             chars_read_total += chars_read_next;
+            buf_string_next[chars_read_next] = '\0';
             for(int i = 0; i < chars_read_next; i++){
                 if(i+chars_read_total-chars_read_next > 15){
                     overflow_element = i;
+                    buf_string_final[16] = '\0';
                     break;
                 }
                 buf_string_final[i+chars_read_total-chars_read_next] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
