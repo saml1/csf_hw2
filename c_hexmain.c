@@ -31,7 +31,7 @@ int main(void) {
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             chars_read_total += chars_read_next;
             for(int i = 0; i < chars_read_next; i++){
-                if(i+chars_read_total > 15){
+                if(i+chars_read > 15){
                     overflow_element = i;
                     break;
                 }
