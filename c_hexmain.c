@@ -35,7 +35,7 @@ int main(void) {
                     overflow_element = i;
                     break;
                 }
-                buf_string_final[i+chars_read] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
+                buf_string_final[i+chars_read_total] = buf_string_next[i]; //copying contents from buf_string_next to buf_string
             }
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
