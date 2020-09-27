@@ -17,6 +17,7 @@ int main(void) {
     int overflow_element = -1;
     chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
     printf("chars_read: %lx\n", chars_read);
+    printf("buf_string_final: %s\n", buf_string_final);
     while(chars_read != 0){
         if(overflow_element!= -1){
             chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
