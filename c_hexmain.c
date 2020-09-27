@@ -52,6 +52,7 @@ int main(void) {
             }
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
+        printf("overflow_element: %d\n", overflow_element);
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
@@ -81,10 +82,6 @@ int main(void) {
         }
         buf_string_final[chars_read_total] = '\0';
         hex_write_string(buf_string_final);
-        /*printf("chars_read_total: %ld\n", chars_read_total);
-        printf("chars_read: %ld\n", chars_read);
-        printf("chars_read_next: %ld\n", chars_read_next);
-        printf("buf_string_final: %s\n", buf_string_final);*/
         if(chars_read_next == 0 && readNext == 1){
             hex_write_string("\n");
             break;
@@ -96,9 +93,7 @@ int main(void) {
             chars_read = hex_read(buf_string_final);
         }
         offset_count+=16;
-        //hex_write_string("\n");
     }
-    //printf("\n%d\n", overflow_element);
     if(overflow_element != -1){
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
@@ -117,7 +112,6 @@ int main(void) {
             buf_string_next[i] = hex_to_printable(buf_string_next[i]);
         }
         buf_string_next[chars_read_next] = '\0';
-        //printf("buf_string_next: %s\n", buf_string_next);
         char buf_string_end[chars_read_next-overflow_element+1];
         for(int i = overflow_element; i < chars_read_next; i++){
             buf_string_end[i-overflow_element] = buf_string_next[i];
