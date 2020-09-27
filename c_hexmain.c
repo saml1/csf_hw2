@@ -75,7 +75,11 @@ int main(void) {
             hex_write_string("\n");
             break;
         }
-        chars_read = hex_read(buf_string);
+        if(readNext == 1){
+            chars_read = hex_read(buf_string);
+        }else{
+            chars_read = hex_read(buf_string_final);
+        }
         offset_count+=16;
         hex_write_string("\n");
     }
