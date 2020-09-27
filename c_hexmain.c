@@ -59,7 +59,7 @@ int main(void) {
                 hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 hex_write_string(" ");
-                printf("chars_read_total: %lx\n", chars_read_total);
+                //printf("chars_read_total: %lx\n", chars_read_total);
             }else{
                 hex_write_string("   ");
             }
@@ -74,7 +74,7 @@ int main(void) {
         for(int i = 0; i < up_to_16; i++){//making all vals good for printing
             buf_string_final[i] = hex_to_printable(buf_string_final[i]);
         }
-        buf_string_final[16] = '\0';
+        buf_string_final[chars_read_total] = '\0';
         hex_write_string(buf_string_final);
         //printf("chars_read_total")
         if(chars_read_next == 0 && readNext == 1){
