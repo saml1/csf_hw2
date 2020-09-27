@@ -10,6 +10,9 @@
         char buf_string_final[17];
         long chars_read = 0;
         long chars_in_final = 0;
+        char buf_offset[9]; //string of offset
+        char byte_in_hex[3]; //string of hex value of char
+        long offset_count = 0;
 
         chars_read = hex_read(buf_string); //Read chars into buf_string, store # of chars read in chars_read
 
@@ -37,10 +40,23 @@
                     chars_in_final += chars_read;
                 }
             }
-            printf("buf_string_final: %s\n", buf_string_final);
-            printf("buf_string: %s\n", buf_string);
-            printf("chars_read: %ld\n", chars_read);
-            printf("chars_in_final: %ld\n", chars_in_final);
+
+            hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
+            hex_write_string(buf_offset); //printing offset
+            hex_write_string(": ");
+
+            for(int i = 0; i < 16; i++){ //printing hex vals of buf_string_final
+                hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
+                hex_write_string(byte_in_hex);
+                hex_write_string(" ");
+                buf_string_final[i] = hex_to_printable(buf_string_final[i]);
+            }
+            buf_string_final[16] = '\0';
+            hex_write_string(" ");
+            hex_write_string(buf_string_final);
+            hex_write_string("\n");
+            offset_count+=16;
+            chars_read = hex_read(buf_string);
         }
     }
 
