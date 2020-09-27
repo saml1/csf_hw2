@@ -68,7 +68,7 @@ int main(void) {
         }
         buf_string_final[16] = '\0';
         hex_write_string(buf_string_final);
-        if(chars_read_next == 0){
+        if(chars_read_next == 0 && chars_read_total!= 16){
             hex_write_string("\n");
             break;
         }
