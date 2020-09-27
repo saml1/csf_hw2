@@ -16,8 +16,6 @@ int main(void) {
     long chars_read_total = 0;
     int overflow_element = -1;
     chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
-    //printf("chars_read: %lx\n", chars_read);
-    //printf("buf_string_final: %s\n", buf_string_final);
     while(chars_read != 0){
         int readNext = 0;
         if(overflow_element!= -1){
@@ -33,6 +31,7 @@ int main(void) {
                 buf_string_final[i] = buf_string[i-overflow_element];
             }
         }
+        printf("chars_read_total: %ld\n", chars_read_total);
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             readNext = 1;
@@ -97,7 +96,7 @@ int main(void) {
         offset_count+=16;
         //hex_write_string("\n");
     }
-    printf("\n%d\n", overflow_element);
+    //printf("\n%d\n", overflow_element);
     if(overflow_element != -1){
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
