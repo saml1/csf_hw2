@@ -75,7 +75,7 @@ int main(void) {
             buf_string_final[i] = hex_to_printable(buf_string_final[i]);
         }
         if(chars_read_total > 16){
-            chars_read_total = chars_read_total % 16;
+            //chars_read_total = chars_read_total % 16;
         }
         buf_string_final[chars_read_total] = '\0';
         hex_write_string(buf_string_final);
