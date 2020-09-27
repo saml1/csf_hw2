@@ -26,6 +26,8 @@
                     }
                     printf("1buf_string_final: %s\n", buf_string_final);
                     printf("1buf_string: %s\n", buf_string);
+                    printf("1chars_read: %ld\n", chars_read);
+                    printf("1chars_in_final: %ld\n", chars_in_final);
                     for(int i = 0; i < chars_read+chars_in_final-16; i++){//moving unused chars to front
                         buf_string[i] = buf_string[16-chars_in_final+i];
                     }
@@ -36,6 +38,8 @@
             }
             printf("buf_string_final: %s\n", buf_string_final);
             printf("buf_string: %s\n", buf_string);
+            printf("chars_read: %ld\n", chars_read);
+            printf("chars_in_final: %ld\n", chars_in_final);
         }
     }
 
