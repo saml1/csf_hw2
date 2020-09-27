@@ -19,6 +19,7 @@ int main(void) {
     //printf("chars_read: %lx\n", chars_read);
     //printf("buf_string_final: %s\n", buf_string_final);
     while(chars_read != 0){
+        int readNext = 0;
         if(overflow_element!= -1){
             chars_read_total = chars_read + chars_read_next - overflow_element;//taking into account overflow
         }else{
@@ -34,6 +35,7 @@ int main(void) {
         }
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
+            readNext = 1;
             if(chars_read_next == 0){
                 break;
             }
@@ -68,7 +70,8 @@ int main(void) {
         }
         buf_string_final[16] = '\0';
         hex_write_string(buf_string_final);
-        if(chars_read_next == 0){
+        //printf("chars_read_total")
+        if(chars_read_next == 0 && readNext == 1){
             hex_write_string("\n");
             break;
         }
