@@ -66,6 +66,7 @@
                 break;
             }
         }
+        buf_string_final[chars_in_final] = '\0';
         /*hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");*/
