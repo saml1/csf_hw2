@@ -4,6 +4,25 @@
 #include "hexfuncs.h"  // this is the only header file which may be included!
 #include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
 
+    void writeFinalDump(long numChars, char buf[], long offset_count, char buf_offset[], char byte_in_hex[]){
+        buf[numChars] = '\0';
+        hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
+        hex_write_string(buf_offset); //printing offset
+        hex_write_string(": ");
+        for(int i = 0; i < 16; i++){
+            if(i < numChars){
+                hex_format_byte_as_hex(buf[i], byte_in_hex);
+                hex_write_string(byte_in_hex);
+                hex_write_string(" ");
+                bufl[i] = hex_to_printable(buf[i]);
+            }else{
+                hex_write_string("   ");
+            }
+        }
+        hex_write_string(" ");
+        hex_write_string(buf);
+        hex_write_string("\n");
+    }
 
     int main(void) {
         char buf_string[17];
@@ -65,9 +84,7 @@
             if(chars_read == 0){
                 //break;
             }
-        }if(chars_in_final != 16){
-            buf_string_final = buf_string;
-        }
+        }/*
         buf_string_final[chars_in_final] = '\0';
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
@@ -84,7 +101,10 @@
         }
         hex_write_string(" ");
         hex_write_string(buf_string_final);
-        hex_write_string("\n");
+        hex_write_string("\n");*/
+        if(chars_in_final != 16){
+            writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
+        }
         printf("buf_string_final: %s\n", buf_string_final);
         printf("buf_string: %s\n", buf_string);
         printf("chars_read: %ld\n", chars_read);
