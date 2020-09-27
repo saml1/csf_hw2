@@ -59,6 +59,7 @@ int main(void) {
                 hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 hex_write_string(" ");
+                printf("chars_read_total: %lx\n", chars_read_total);
             }else{
                 hex_write_string("   ");
             }
