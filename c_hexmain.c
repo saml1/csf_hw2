@@ -32,6 +32,8 @@ int main(void) {
             }
         }
         printf("chars_read_total: %ld\n", chars_read_total);
+        printf("chars_read_next: %ld\n", chars_read_next);
+        printf("buf_string_next: %s\n", buf_string_next);
         while(chars_read_total < 16){ //keeps reading input until it gets to 16 chars
             chars_read_next = hex_read(buf_string_next); //stores input in buf_string_next
             readNext = 1;
