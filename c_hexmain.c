@@ -23,6 +23,9 @@
             chars_in_final = chars_read;
             while(chars_in_final < 16){
                 chars_read = hex_read(buf_string); //read input to buf_string, store in chars_read
+                if(chars_read == 0){
+                    break;
+                }
                 if(chars_in_final + chars_read >= 16){
                     for(int i = chars_in_final; i < 16; i++){//storing chars from buf_string in buf_string_final
                         buf_string_final[i] = buf_string[i-chars_in_final];
@@ -40,7 +43,9 @@
                     chars_in_final += chars_read;
                 }
             }
-
+            if(chars_read == 0){
+                break;
+            }
             hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
             hex_write_string(buf_offset); //printing offset
             hex_write_string(": ");
@@ -57,6 +62,9 @@
             hex_write_string("\n");
             offset_count+=16;
             chars_read = hex_read(buf_string);
+            if(chars_read == 0){
+                break;
+            }
         }
         /*hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
