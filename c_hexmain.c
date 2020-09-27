@@ -64,8 +64,13 @@ int main(void) {
             }
         }
         hex_write_string(" ");
-
-        for(int i = 0; i < chars_read_total; i++){//making all vals good for printing
+        long up_to_16;
+        if(chars_read_total > 16){
+            up_to_16 = 16;
+        }else{
+            up_to_16 = chars_read_total;
+        }
+        for(int i = 0; i < up_to_16; i++){//making all vals good for printing
             buf_string_final[i] = hex_to_printable(buf_string_final[i]);
         }
         buf_string_final[16] = '\0';
