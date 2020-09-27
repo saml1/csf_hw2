@@ -77,6 +77,7 @@ int main(void) {
         buf_string_final[chars_read_total] = '\0';
         hex_write_string(buf_string_final);
         printf("chars_read_total: %lx\n", chars_read_total);
+        printf("buf_string_final: %s\n", buf_string_final);
         if(chars_read_next == 0 && readNext == 1){
             hex_write_string("\n");
             break;
