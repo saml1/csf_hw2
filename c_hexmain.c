@@ -97,6 +97,7 @@ int main(void) {
         offset_count+=16;
         //hex_write_string("\n");
     }
+    printf("\n%d\n", overflow_element);
     if(overflow_element != -1){
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
