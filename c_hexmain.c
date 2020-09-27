@@ -65,6 +65,8 @@
             if(chars_read == 0){
                 //break;
             }
+        }if(chars_in_final != 16){
+            buf_string_final = buf_string;
         }
         buf_string_final[chars_in_final] = '\0';
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
