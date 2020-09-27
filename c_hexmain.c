@@ -14,7 +14,7 @@
                 hex_format_byte_as_hex(buf[i], byte_in_hex);
                 hex_write_string(byte_in_hex);
                 hex_write_string(" ");
-                bufl[i] = hex_to_printable(buf[i]);
+                buf[i] = hex_to_printable(buf[i]);
             }else{
                 hex_write_string("   ");
             }
