@@ -79,10 +79,10 @@ int main(void) {
         }
         buf_string_final[chars_read_total] = '\0';
         hex_write_string(buf_string_final);
-        /*printf("chars_read_total: %ld\n", chars_read_total);
+        printf("chars_read_total: %ld\n", chars_read_total);
         printf("chars_read: %ld\n", chars_read);
         printf("chars_read_next: %ld\n", chars_read_next);
-        printf("buf_string_final: %s\n", buf_string_final);*/
+        printf("buf_string_final: %s\n", buf_string_final);
         if(chars_read_next == 0 && readNext == 1){
             hex_write_string("\n");
             break;
