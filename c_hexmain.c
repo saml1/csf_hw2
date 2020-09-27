@@ -58,6 +58,14 @@
             offset_count+=16;
             chars_read = hex_read(buf_string);
         }
+        /*hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
+        hex_write_string(buf_offset); //printing offset
+        hex_write_string(": ");*/
+        printf("buf_string_final: %s\n", buf_string_final);
+        printf("buf_string: %s\n", buf_string);
+        printf("chars_read: %ld\n", chars_read);
+        printf("chars_in_final: %ld\n", chars_in_final);
+
     }
 
 
