@@ -24,6 +24,8 @@
                     for(int i = chars_in_final; i < 16; i++){
                         buf_string_final[i] = buf_string[i-chars_in_final];
                     }
+                    printf("1buf_string_final: %s\n", buf_string_final);
+                    printf("1buf_string: %s\n", buf_string);
                     for(int i = 0; i < chars_read+chars_in_final-16; i++){//moving unused chars to front
                         buf_string[i] = buf_string[16-chars_in_final+i];
                     }
