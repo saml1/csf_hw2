@@ -31,9 +31,9 @@
                     for(int i = 0; i < chars_read+chars_in_final-16; i++){//moving unused chars to front
                         buf_string[i] = buf_string[16-chars_in_final+i];
                     }
-                    chars_in_final = 16;
                     chars_read = chars_read+chars_in_final-16; //amount of chars "left over"
                     buf_string[chars_read] = '\0';
+                    chars_in_final = 16;
                 }
             }
             printf("buf_string_final: %s\n", buf_string_final);
