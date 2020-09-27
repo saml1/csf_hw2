@@ -88,13 +88,14 @@ int main(void) {
             hex_write_string("\n");
             break;
         }
+        hex_write_string("\n");
         if(readNext == 1){
             chars_read = hex_read(buf_string);
         }else{
             chars_read = hex_read(buf_string_final);
         }
         offset_count+=16;
-        hex_write_string("\n");
+        //hex_write_string("\n");
     }
     if(overflow_element != -1){
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
