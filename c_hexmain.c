@@ -109,9 +109,9 @@
             while(buf_string[size] != '\0'){
                 size++;
             }
-            size++;
-            printf("size: %d\n", size);
-            //writeFinalDump(chars_read, buf_string, offset_count, buf_offset,byte_in_hex);
+            //size++;
+            //printf("size: %d\n", size);
+            writeFinalDump(size, buf_string, offset_count, buf_offset,byte_in_hex);
         }
         printf("buf_string_final: %s\n", buf_string_final);
         printf("buf_string: %s\n", buf_string);
