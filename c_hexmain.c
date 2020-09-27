@@ -63,7 +63,7 @@
             offset_count+=16;
             chars_read = hex_read(buf_string);
             if(chars_read == 0){
-                break;
+                //break;
             }
         }
         buf_string_final[chars_in_final] = '\0';
