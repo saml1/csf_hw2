@@ -53,6 +53,7 @@ int main(void) {
             //TODO: deal with elements in chars_read_next starting with overflow_element
         }
         printf("overflow_element: %d\n", overflow_element);
+        printf("buf_string_final: %s\n", buf_string_final);
         hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
         hex_write_string(": ");
