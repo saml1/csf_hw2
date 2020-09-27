@@ -12,7 +12,7 @@ int main(void) {
     char byte_in_hex[3]; //string of hex value of char
     long offset_count = 0;
     long chars_read = 0;
-    long chars_read_next = -1;
+    long chars_read_next = 0;
     long chars_read_total = 0;
     int overflow_element = -1;
     chars_read = hex_read(buf_string_final); //stores input in buf_string and records #bytes in chars_read;
