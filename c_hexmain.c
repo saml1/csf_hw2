@@ -104,6 +104,14 @@
         hex_write_string("\n");*/
         if(chars_in_final != 16){
             writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
+        }else{
+            int size = 0;
+            while(buf_string[size] != '\0'){
+                size++;
+            }
+            size++;
+            printf("size: %d\n", size);
+            //writeFinalDump(chars_read, buf_string, offset_count, buf_offset,byte_in_hex);
         }
         printf("buf_string_final: %s\n", buf_string_final);
         printf("buf_string: %s\n", buf_string);
