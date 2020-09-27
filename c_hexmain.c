@@ -67,13 +67,26 @@
             }
         }
         buf_string_final[chars_in_final] = '\0';
-        /*hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
+        hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
         hex_write_string(buf_offset); //printing offset
-        hex_write_string(": ");*/
-        printf("buf_string_final: %s\n", buf_string_final);
+        hex_write_string(": ");
+        for(int i = 0; i < 16; i++){
+            if(i < chars_in_final){
+                hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
+                hex_write_string(byte_in_hex);
+                hex_write_string(" ");
+                buf_string_final[i] = hex_to_printable(buf_string_final[i]);
+            }else{
+                hex_write_string("   ");
+            }
+        }
+        hex_write_string(" ");
+        hex_write_string(buf_string_final);
+        hex_write_string("\n");
+        /*printf("buf_string_final: %s\n", buf_string_final);
         printf("buf_string: %s\n", buf_string);
         printf("chars_read: %ld\n", chars_read);
-        printf("chars_in_final: %ld\n", chars_in_final);
+        printf("chars_in_final: %ld\n", chars_in_final);*/
 
     }
 
