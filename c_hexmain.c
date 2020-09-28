@@ -52,7 +52,11 @@
                 //buf_string[chars_read] = '\0';
                 if(chars_read == 0){
                     printf("broke here1\n");
+                    //printf("buf_string: %s\n", buf_string);
+                    printf("buf_string_final: %s\n", buf_string_final);
                     printf("buf_string: %s\n", buf_string);
+                    printf("chars_read: %ld\n", chars_read);
+                    printf("chars_in_final: %ld\n", chars_in_final);*/
                     break;
                 }
                 if(chars_in_final + chars_read >= 16){
