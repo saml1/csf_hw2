@@ -43,7 +43,7 @@
             while(chars_in_final < 16){
                 chars_read = hex_read(buf_string); //read input to buf_string, store in chars_read
                 if(chars_read == 0){
-                    break;
+                    //break;
                 }
                 if(chars_in_final + chars_read >= 16){
                     for(int i = chars_in_final; i < 16; i++){//storing chars from buf_string in buf_string_final
