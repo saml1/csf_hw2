@@ -106,7 +106,7 @@
             printf("chars_read: %ld\n", chars_read);
             printf("chars_in_final: %ld\n", chars_in_final);
         }
-        if(chars_in_final != 16){
+        if(chars_in_final != 16 || (chars_in_final == 16 && chars_read == 0)){
             writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
         }else{
             int size = 0;
