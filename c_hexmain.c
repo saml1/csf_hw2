@@ -101,10 +101,10 @@
             if(chars_read == 0){
                 //break;
             }
-            printf("buf_string_final: %s\n", buf_string_final);
+            /*printf("buf_string_final: %s\n", buf_string_final);
             printf("buf_string: %s\n", buf_string);
             printf("chars_read: %ld\n", chars_read);
-            printf("chars_in_final: %ld\n", chars_in_final);
+            printf("chars_in_final: %ld\n", chars_in_final);*/
         }
         if(chars_in_final != 16 || (chars_in_final == 16 && chars_read == 0)){
             writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
@@ -117,10 +117,10 @@
             //printf("size: %d\n", size);
             writeFinalDump(size, buf_string, offset_count, buf_offset,byte_in_hex);
         }
-        printf("buf_string_final: %s\n", buf_string_final);
+        /*printf("buf_string_final: %s\n", buf_string_final);
         printf("buf_string: %s\n", buf_string);
         printf("chars_read: %ld\n", chars_read);
-        printf("chars_in_final: %ld\n", chars_in_final);
+        printf("chars_in_final: %ld\n", chars_in_final);*/
 
     }
 
