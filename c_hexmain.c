@@ -63,7 +63,7 @@
                 }
             }
             if(chars_read == 0){
-                break;
+                //break;
             }
             hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
             hex_write_string(buf_offset); //printing offset
