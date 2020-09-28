@@ -51,6 +51,7 @@
                 chars_read = hex_read(buf_string); //read input to buf_string, store in chars_read
                 //buf_string[chars_read] = '\0';
                 if(chars_read == 0){
+                    printf("broke here1\n");
                     break;
                 }
                 if(chars_in_final + chars_read >= 16){
@@ -74,6 +75,7 @@
                 }
             }
             if(chars_read == 0){
+                printf("broke here1\n");
                 break;
             }
             hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
