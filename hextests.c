@@ -1,7 +1,8 @@
 // Unit tests for hex functions
 // These tests should work for both your C implementations and your
 // assembly language implementations
-
+//Sam Lipschitz
+//slipsch3@jhu.edu
 #include <stdio.h>
 #include <stdlib.h>
 #include "tctest.h"
@@ -66,4 +67,5 @@ void testFormatByteAsHex(TestObjs *objs) {
 void testHexToPrintable(TestObjs *objs) {
   ASSERT('H' == hex_to_printable(objs->test_data_1[0]));
   ASSERT('.' == hex_to_printable(objs->test_data_1[13]));
+  ASSERT('e' == hex_to_printable(objs->test_data_1[1]));
 }
