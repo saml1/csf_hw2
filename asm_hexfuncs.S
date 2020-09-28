@@ -37,7 +37,7 @@ hex_format_byte_as_hex:
     movq %rdi, %r9      /*moving byteval param to r9*/
     shr $4, %r9          /*right shifting byteval by 4*/
     and $15,%r9         /*doing r9 & 15 (this is first hex)*/
-    movq $sHexvals, %r10 /*storing sHexvals in r10*/
+    movq $sHexVals, %r10 /*storing sHexvals in r10*/
     movq (%r10, %r9), %r9 /*moves value of string element r9 to r9*/
     movq (%r10, %r8), %r8 /*moves value of string element r8 to r8*/
     addq $8, %rsp       /*restore stack pointer*/
