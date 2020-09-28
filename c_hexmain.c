@@ -3,7 +3,7 @@
 //Sam Lipschitz
 //slipsch3@jhu.edu
 #include "hexfuncs.h"  // this is the only header file which may be included!
-//#include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
+#include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
 
     void writeFinalDump(long numChars, char buf[], long offset_count, char buf_offset[], char byte_in_hex[]){
         buf[numChars] = '\0';
