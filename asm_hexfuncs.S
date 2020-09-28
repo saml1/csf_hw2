@@ -32,6 +32,9 @@ hex_to_printable:
     .globl hex_format_byte_as_hex
 hex_format_byte_as_hex:
 
+    .globl hex_format_offset
+hex_format_offset:
+
 
 /* vim:ft=gas:
  */
