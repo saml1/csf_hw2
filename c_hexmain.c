@@ -32,8 +32,10 @@
         char buf_offset[9]; //string of offset
         char byte_in_hex[3]; //string of hex value of char
         long offset_count = 0;
+        int chars_left_over = -1;
 
         chars_read = hex_read(buf_string); //Read chars into buf_string, store # of chars read in chars_read
+        //buf_string[chars_read] = '\0';
 
         while(chars_read != 0){ //While ! eof:
             for(int i = 0; i < chars_read; i++){ //add chars from buf_string to buf_string_final and keep track of # chars with chars_in_final
@@ -42,6 +44,7 @@
             chars_in_final = chars_read;
             while(chars_in_final < 16){
                 chars_read = hex_read(buf_string); //read input to buf_string, store in chars_read
+                //buf_string[chars_read] = '\0';
                 if(chars_read == 0){
                     break;
                 }
@@ -51,6 +54,9 @@
                     }
                     for(int i = 0; i < chars_read+chars_in_final-16; i++){//moving unused chars to front
                         buf_string[i] = buf_string[16-chars_in_final+i];
+                    }
+                    if(chars_in_final + chars_read > 16){//must keep track of overflow elements
+                        chars_left_over = chars_read+chars_in_final - 16;
                     }
                     chars_read = chars_read+chars_in_final-16; //amount of chars "left over"
                     buf_string[chars_read] = '\0';
@@ -80,28 +86,18 @@
             hex_write_string(buf_string_final);
             hex_write_string("\n");
             offset_count+=16;
+            if(chars_left_over != -1){ //must save buf_string somehow!
+                chars_in_final = chars_left_over;
+                for(int i = 0; i < chars_left_over; i++){
+                    buf_string_final[i] = buf_string[i];
+                }
+                chars_left_over = -1;//set up for next loop
+            }
             chars_read = hex_read(buf_string);
             if(chars_read == 0){
                 //break;
             }
-        }/*
-        buf_string_final[chars_in_final] = '\0';
-        hex_format_offset(offset_count, buf_offset); //storing string-rep of offset_count in buf_offset
-        hex_write_string(buf_offset); //printing offset
-        hex_write_string(": ");
-        for(int i = 0; i < 16; i++){
-            if(i < chars_in_final){
-                hex_format_byte_as_hex(buf_string_final[i], byte_in_hex);
-                hex_write_string(byte_in_hex);
-                hex_write_string(" ");
-                buf_string_final[i] = hex_to_printable(buf_string_final[i]);
-            }else{
-                hex_write_string("   ");
-            }
         }
-        hex_write_string(" ");
-        hex_write_string(buf_string_final);
-        hex_write_string("\n");*/
         if(chars_in_final != 16){
             writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
         }else{
