@@ -39,7 +39,11 @@
 
         while(chars_read != 0){ //While ! eof:
             for(int i = 0; i < chars_read; i++){ //add chars from buf_string to buf_string_final and keep track of # chars with chars_in_final
-                buf_string_final[i+chars_in_final] = buf_string[i];
+                if(chars_in_final != 16){
+                    buf_string_final[i+chars_in_final] = buf_string[i];
+                }else{
+                    buf_string_final[i] = buf_string[i];
+                }
             }
             chars_in_final = chars_read;
             while(chars_in_final < 16){
