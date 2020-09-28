@@ -5,7 +5,7 @@ slipsch3@jhu.edu
 */
 
 	.section .rodata
-sHexVals: "0123456789abcdef"
+sHexVals: .string "0123456789abcdef"
 
 	/* TODO: add read-only data such as strings here */
 
