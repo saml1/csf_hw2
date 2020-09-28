@@ -31,7 +31,7 @@ hex_to_printable:
 
     .globl hex_format_byte_as_hex
 hex_format_byte_as_hex:
-    subq $8, %rsp       /*align stack pointer*/
+    subq $16, %rsp       /*align stack pointer*/
     movq %rdi, %r8      /*moving byteval param to r8*/
     and $15,%r8         /*doing r8 & 15 (this is 2nd hex)*/
     movq %rdi, %r9      /*moving byteval param to r9*/
@@ -43,7 +43,7 @@ hex_format_byte_as_hex:
     movq %r9, %rsi /*moving 1st hex val to 2nd arg param*/
     movq %r8, 1(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
     movq $0, 2(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
-    addq $8, %rsp       /*restore stack pointer*/
+    addq $16, %rsp       /*restore stack pointer*/
 
     .globl hex_format_offset
 hex_format_offset:
