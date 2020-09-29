@@ -36,6 +36,9 @@
         int chars_left_over = -1;
 
         chars_read = hex_read(buf_string); //Read chars into buf_string, store # of chars read in chars_read
+        if(chars_read == 0){
+            return;
+        }
         //buf_string[chars_read] = '\0';
 
         while(chars_read != 0){ //While ! eof:
