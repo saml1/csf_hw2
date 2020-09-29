@@ -107,7 +107,7 @@
                 printf("buf_string: %s\n", buf_string);
                 printf("chars_read: %ld\n", chars_read);
                 printf("chars_in_final: %ld\n", chars_in_final);*/
-                //return 0;
+                return 0;
                 break;
             }
             /*printf("buf_string_final: %s\n", buf_string_final);
