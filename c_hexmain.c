@@ -3,7 +3,7 @@
 //Sam Lipschitz
 //slipsch3@jhu.edu
 #include "hexfuncs.h"  // this is the only header file which may be included!
-//#include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
+#include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
 
     void writeFinalDump(long numChars, char buf[], long offset_count, char buf_offset[], char byte_in_hex[]){
         buf[numChars] = '\0';
@@ -103,10 +103,10 @@
             }
             chars_read = hex_read(buf_string);
             if(chars_read == 0 && chars_in_final == 16){
-                /*printf("buf_string_final: %s\n", buf_string_final);
+                printf("buf_string_final: %s\n", buf_string_final);
                 printf("buf_string: %s\n", buf_string);
                 printf("chars_read: %ld\n", chars_read);
-                printf("chars_in_final: %ld\n", chars_in_final);*/
+                printf("chars_in_final: %ld\n", chars_in_final);
                 return 0;
                 break;
             }
