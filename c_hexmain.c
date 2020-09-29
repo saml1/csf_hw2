@@ -103,7 +103,7 @@
             }
             chars_read = hex_read(buf_string);
             if(chars_read == 0){
-                //break;
+                break;
             }
             /*printf("buf_string_final: %s\n", buf_string_final);
             printf("buf_string: %s\n", buf_string);
