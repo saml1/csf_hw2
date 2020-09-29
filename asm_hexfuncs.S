@@ -36,13 +36,13 @@ hex_format_byte_as_hex:
     and $15,%r8         /*doing r8 & 15 (this is 2nd hex)*/
     movq %rdi, %r9      /*moving byteval param to r9*/
     shr $4, %r9          /*right shifting byteval by 4*/
-    and $15,%r9         /*doing r9 & 15 (this is first hex)*/
+    AND $0xF,%r9         /*doing r9 & 15 (this is first hex)*/
     movq $sHexVals, %r10 /*storing sHexvals in r10*/
     movq (%r10, %r9), %r9 /*moves value of string element r9 to r9*/
     movq (%r10, %r8), %r8 /*moves value of string element r8 to r8*/
     movq %r9, %rsi /*moving 1st hex val to 2nd arg param*/
     movq %r8, 1(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
-    movq $0, 2(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
+    movq $0, 2(%rsi) /*moving null terminator hex val to 2nd arg param +2*/
     addq $8, %rsp       /*restore stack pointer*/
 
     .globl hex_format_offset
