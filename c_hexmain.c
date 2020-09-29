@@ -37,7 +37,7 @@
 
         chars_read = hex_read(buf_string); //Read chars into buf_string, store # of chars read in chars_read
         if(chars_read == 0){
-            return;
+            return 1;
         }
         //buf_string[chars_read] = '\0';
 
