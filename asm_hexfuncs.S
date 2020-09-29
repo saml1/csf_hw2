@@ -15,13 +15,13 @@ sHexVals: .string "0123456789abcdef"
 
 	.globl hex_to_printable
 hex_to_printable:
-    subq $8, %rsp       /*align stack pointer*/
+    subq $128, %rsp       /*align stack pointer*/
     cmpq $32, %rdi      /*is rdi >= 32?*/
     jl .LreturnPeriod   /*if not, return a period*/
     cmpq $126, %rdi     /*is rdi <= 126?*/
     jg .LreturnPeriod   /*if so, return a period*/
     movq %rdi, %rax     /*if it got this far, should return val in rdi*/
-    addq $8, %rsp       /*restore stack pointer*/
+    addq $128, %rsp       /*restore stack pointer*/
     ret
 
 .LreturnPeriod:
