@@ -40,8 +40,8 @@ hex_format_byte_as_hex:
     movq $sHexVals, %r10 /*storing sHexvals in r10*/
     movb (%r10, %r9), %r9b /*moves value of string element r9 to r9*/
     movb (%r10, %r8), %r8b /*moves value of string element r8 to r8*/
-    movb %r8b, %sil /*moving 1st hex val to 2nd arg param*/
-    movb %r9b, 1(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
+    movb %r9b, %sil /*moving 1st hex val to 2nd arg param*/
+    movb %r8b, 1(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
     movb $0, 2(%rsi) /*moving null terminator hex val to 2nd arg param +2*/
     addq $8, %rsp       /*restore stack pointer*/
 
