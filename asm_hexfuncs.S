@@ -47,7 +47,28 @@ hex_format_byte_as_hex:
 
     .globl hex_format_offset
 hex_format_offset:
+    subq $8, %rsp                 /*align stack pointer*/
+    movb $0, %r9b                    /*starting at 0, going to 7, r9 is index of sbuf*/
+    movq $sHexVals, %r10            /*storing sHexvals in r10*/
 
+.LbeginForLoop:
+    movq %rdi, %r8                /*moving offset param to r8*/
+    cmp $8, %r9b                  /*comparing 8 to the current index*/
+    jl .LaddChar                 /* if r9b < 8, jump to .LaddChar*/
+    movb $0, 8(%rsi)            /*moving null terminator hex val to 2nd arg param +8*/
+    addq $8, %rsp                /*restore stack pointer*/
+    ret
+
+.LaddChar:
+    movb %r9b, %al                /*moving i to byte 0 of rax*/
+    imul $4, %rax                 /* multiplying i by 4*/
+    movb %al, %cl               /* because shr only works with cl as size*/
+    shr %cl, %r8                 /*right shifting offset by i*4*/
+    and $15, %r8                /*doing offset & 15 (this is now the digit) */
+    movb (%r10, %r8), %r8b       /*moving digit val of string to r8b*/
+    movb %r8b, (%rsi, %r9)     /*moving digit val to 2nd param+i */
+    inc %r9b                         /*doing i++*/
+    jmp .LbeginForLoop          /*go to beginning of for loop */
 
 
 
