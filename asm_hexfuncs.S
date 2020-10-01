@@ -68,8 +68,8 @@ hex_format_offset:
     and $15, %r8                /*doing offset & 15 (this is now the digit) */
     movb (%r10, %r8), %r8b       /*moving digit val of string to r8b*/
     /*this is lines ive added*/
-    movq $7, %r11            /*storing r9b in r11b*/
-    sub %r9b, %r11b
+    movq $7, %r11            /*storing $7 in r11*/
+    sub %r9b, %r11b             /* making r11 = 7 - i*/
     /*end newly added lines*/
     movb %r8b, (%rsi, %r11)     /*moving digit val to 2nd param+i */
     inc %r9b                         /*doing i++*/
