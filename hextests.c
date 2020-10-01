@@ -60,7 +60,7 @@ void testFormatByteAsHex(TestObjs *objs) {
   char buf[16];
   hex_format_byte_as_hex(objs->test_data_1[0], buf);
   ASSERT(0 == strcmp(buf, "48"));
-  printf("buf: %s\n", buf);
+  //printf("buf: %s\n", buf);
   hex_format_byte_as_hex(objs->test_data_1[1], buf);
   ASSERT(0 == strcmp(buf, "65"));
 }
