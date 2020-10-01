@@ -81,4 +81,9 @@ void testHexToPrintable(TestObjs *objs) {
   ASSERT('H' == hex_to_printable(objs->test_data_1[0]));
   ASSERT('.' == hex_to_printable(objs->test_data_1[13]));
   ASSERT('e' == hex_to_printable(objs->test_data_1[1]));
+  ASSERT('l' == hex_to_printable(objs->test_data_1[2]));
+  ASSERT('l' == hex_to_printable(objs->test_data_1[3]));
+  ASSERT('o' == hex_to_printable(objs->test_data_1[4]));
+  ASSERT(',' == hex_to_printable(objs->test_data_1[5]));
+  ASSERT(' ' == hex_to_printable(objs->test_data_1[6]));
 }
