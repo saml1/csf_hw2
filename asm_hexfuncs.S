@@ -62,7 +62,7 @@ hex_format_offset:
 .LaddChar:
     movb %r9b, %al                /*moving i to byte 0 of rax*/
     imul $4, %rax                 /* multiplying i by 4*/
-    shrw %al, %r8                 /*right shifting offset by i*4*/
+    shrw %al, %r8d                 /*right shifting offset by i*4*/
     and $15, %r8                /*doing offset & 15 (this is now the digit) */
     movb (%r10, %r8), %r8b       /*moving digit val of string to r8b*/
     movb %r8b, (%rsi, %r9b)     /*moving digit val to 2nd param+i */
