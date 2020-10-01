@@ -71,7 +71,7 @@ hex_format_offset:
     movb $7, %r11b            /*storing r9b in r11b*/
     sub %r9b, %r11b
     /*end newly added lines*/
-    movb %r8b, (%rsi, %r11)     /*moving digit val to 2nd param+i */
+    movb %r8b, (%rsi, %r9)     /*moving digit val to 2nd param+i */
     inc %r9b                         /*doing i++*/
     jmp .LbeginForLoop          /*go to beginning of for loop */
 
