@@ -44,6 +44,7 @@ hex_format_byte_as_hex:
     movb %r8b, 1(%rsi) /*moving 2nd hex val to 2nd arg param +1*/
     movb $0, 2(%rsi) /*moving null terminator hex val to 2nd arg param +2*/
     addq $8, %rsp       /*restore stack pointer*/
+    ret
 
     .globl hex_format_offset
 hex_format_offset:
