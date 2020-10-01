@@ -60,9 +60,21 @@ void testFormatByteAsHex(TestObjs *objs) {
   char buf[16];
   hex_format_byte_as_hex(objs->test_data_1[0], buf);
   ASSERT(0 == strcmp(buf, "48"));
-  //printf("buf: %s\n", buf);
+
   hex_format_byte_as_hex(objs->test_data_1[1], buf);
   ASSERT(0 == strcmp(buf, "65"));
+
+  hex_format_byte_as_hex(objs->test_data_1[2], buf);
+  ASSERT(0 == strcmp(buf, "6c"));
+
+  hex_format_byte_as_hex(objs->test_data_1[3], buf);
+  ASSERT(0 == strcmp(buf, "6c"));
+
+  hex_format_byte_as_hex(objs->test_data_1[4], buf);
+  ASSERT(0 == strcmp(buf, "6f"));
+
+  hex_format_byte_as_hex(objs->test_data_1[5], buf);
+  ASSERT(0 == strcmp(buf, "2x"));
 }
 
 void testHexToPrintable(TestObjs *objs) {
