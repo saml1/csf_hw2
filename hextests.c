@@ -74,7 +74,7 @@ void testFormatByteAsHex(TestObjs *objs) {
   ASSERT(0 == strcmp(buf, "6f"));
 
   hex_format_byte_as_hex(objs->test_data_1[5], buf);
-  ASSERT(0 == strcmp(buf, "2x"));
+  ASSERT(0 == strcmp(buf, "2c"));
 }
 
 void testHexToPrintable(TestObjs *objs) {
