@@ -54,6 +54,7 @@ void testFormatOffset(TestObjs *objs) {
   ASSERT(0 == strcmp(buf, "00000001"));*/
 
   hex_format_offset(12345L, buf);
+  printf("buf: %s\n", buf);
   ASSERT(0 == strcmp(buf, "00003039"));
 }
 
