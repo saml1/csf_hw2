@@ -117,6 +117,7 @@
         }
         if(chars_in_final != 16 || (chars_in_final == 16 && chars_read == 0)){
             writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
+            return 0;
         }else{
             int size = 0;
             while(buf_string[size] != '\0'){
@@ -125,6 +126,7 @@
             //size++;
             //printf("size: %d\n", size);
             writeFinalDump(size, buf_string, offset_count, buf_offset,byte_in_hex);
+            return 0;
         }
         /*printf("buf_string_final: %s\n", buf_string_final);
         printf("buf_string: %s\n", buf_string);
