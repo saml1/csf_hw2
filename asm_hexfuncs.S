@@ -67,6 +67,10 @@ hex_format_offset:
     shr %cl, %r8                 /*right shifting offset by i*4*/
     and $15, %r8                /*doing offset & 15 (this is now the digit) */
     movb (%r10, %r8), %r8b       /*moving digit val of string to r8b*/
+    /*this is lines ive added*/
+    movb $7, %r11b            /*storing r9b in r11b*/
+    sub %r9b, %r11b
+    /*end newly added lines*/
     movb %r8b, (%rsi, %r9)     /*moving digit val to 2nd param+i */
     inc %r9b                         /*doing i++*/
     jmp .LbeginForLoop          /*go to beginning of for loop */
