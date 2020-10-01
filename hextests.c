@@ -49,9 +49,9 @@ int main(int argc, char **argv) {
 void testFormatOffset(TestObjs *objs) {
   (void) objs; // suppress warning about unused parameter
   char buf[16];
-  /*hex_format_offset(1L, buf);
+  hex_format_offset(1L, buf);
   printf("buf: %s\n", buf);
-  ASSERT(0 == strcmp(buf, "00000001"));*/
+  ASSERT(0 == strcmp(buf, "00000001"));
 
   hex_format_offset(12345L, buf);
   printf("buf: %s\n", buf);
