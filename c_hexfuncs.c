@@ -17,9 +17,9 @@ long hex_read(char data_buf[]){
 void hex_write_string(const char s[]){
     int size = 0;
     while(s[size] != '\0'){
-        //size++;
+        size++;
     }
-    size++;
+    //size++;
     write(STDOUT_FILENO, s, size);
 }
 
