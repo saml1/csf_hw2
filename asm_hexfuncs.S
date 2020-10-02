@@ -6,12 +6,9 @@ slipsch3@jhu.edu
 
 	.section .rodata
 
-	/* TODO: add read-only data such as strings here */
 sHexVals: .string "0123456789abcdef"
 
 	.section .text
-
-	/* TODO: add functions here */
 
 	.globl hex_to_printable
 hex_to_printable:
