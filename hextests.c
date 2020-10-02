@@ -105,6 +105,7 @@ void testHexReadWrite(){
     buf[16] = '\0';
     printf("\n");
     long chars_read = hex_read(buf);
+    buf[chars_read] = '\0';
     printf("chars_read: %lx\n", chars_read);
     printf("\nbuf: %s\n", buf);
     hex_write_string(buf);
