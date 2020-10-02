@@ -103,7 +103,7 @@ void testHexToPrintable(TestObjs *objs) {
 void testHexReadWrite(){
     char buf[17];
     buf[16] = '\0';
-    long chars_read = hex_read(buf);
+    hex_read(buf);
     //printf("chars_read: %lx\n", chars_read);
     //printf("buf: %s\n", buf);
     hex_write_string(buf);
