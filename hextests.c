@@ -41,6 +41,7 @@ int main(int argc, char **argv) {
   TEST(testFormatOffset);
   TEST(testFormatByteAsHex);
   TEST(testHexToPrintable);
+  TEST(testHexRead);
 
   TEST_FINI();
 
