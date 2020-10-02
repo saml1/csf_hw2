@@ -75,6 +75,19 @@ hex_format_offset:
     inc %r9b                         /*doing i++*/
     jmp .LbeginForLoop          /*go to beginning of for loop */
 
+    .globl hex_read
+hex_read:
+    subq $8, %rsp                 /*align stack pointer*/
+    movq %rdi, %rsi                 /* rdi is data_buf, want it in 2nd param (rsi) when syscall executes*/
+    movq $0, %rdi                  /* 0 is STDIN, rdi is first param of read*/
+    movq $16, %rdx                  /* rdx is 3rd param (for read is # bytes)*/
+    syscall                         /* execute system call */
+    addq $8, %rsp                /*restore stack pointer*/
+        ret
+
+    .globl hex_write_string
+hex_write_string:
+
 
 
 /* vim:ft=gas:
