@@ -101,6 +101,8 @@ void testHexToPrintable(TestObjs *objs) {
 
 void testHexRead(){
     char buf[17];
+    buf[16] = '\0';
     long chars_read = hex_read(buf);
+    printf("chars_read: %lx\n", chars_read);
     printf("buf: %s\n", buf);
 }

@@ -81,6 +81,7 @@ hex_read:
     movq %rdi, %rsi                 /* rdi is data_buf, want it in 2nd param (rsi) when syscall executes*/
     movq $0, %rdi                  /* 0 is STDIN, rdi is first param of read*/
     movq $16, %rdx                  /* rdx is 3rd param (for read is # bytes)*/
+    movq $0, %rax                 /* read is system call number 0 */
     syscall                         /* execute system call */
     addq $8, %rsp                /*restore stack pointer*/
         ret
