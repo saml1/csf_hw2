@@ -88,7 +88,7 @@ hex_write_string:
     subq $8, %rsp                 /*align stack pointer*/
     movq $0, %r8                   /* this will be index*/
 .LcompareToZero:
-    cmp $0, (%rdi, %r8)             /* comparing 0 ('\0') to char at index of r8*/
+    cmpb $0, (%rdi, %r8)             /* comparing 0 ('\0') to char at index of r8*/
     jne .LincUp                     /* if not null terminator, increment r8*/
     movq %r8, %rdx                  /* r8 is # chars before '\0', this goes in 3rd arg*/
     movq %rdi, %rsi                 /* rdi is char, must be in 2nd arg*/
