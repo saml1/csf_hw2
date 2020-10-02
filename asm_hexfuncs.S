@@ -84,10 +84,26 @@ hex_read:
     movq $0, %rax                 /* read is system call number 0 */
     syscall                         /* execute system call */
     addq $8, %rsp                /*restore stack pointer*/
-        ret
+    ret
 
     .globl hex_write_string
 hex_write_string:
+    subq $8, %rsp                 /*align stack pointer*/
+    movq $0, %r8                   /* this will be index*/
+.LcompareToZero:
+    cmp $0, (%rdi, %r8)             /* comparing 0 ('\0') to char at index of r8*/
+    jne .LincUp                     /* if not null terminator, increment r8*/
+    movq %r8, %rdx                  /* r8 is # chars before '\0', this goes in 3rd arg*/
+    movq %rdi, %rsi                 /* rdi is char, must be in 2nd arg*/
+    movq $1, %rdi                 /* 1st arg to write is file desc */
+    movq $1, %rax                 /* write is system call 1 */
+    syscall                       /* execute the system call! */
+    addq $8, %rsp                /*restore stack pointer*/
+    ret
+
+.LincUp:
+    inc %r8
+    jmp .LcompareToZero
 
 
 

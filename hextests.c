@@ -29,7 +29,7 @@ void cleanup(TestObjs *objs) {
 void testFormatOffset(TestObjs *objs);
 void testFormatByteAsHex(TestObjs *objs);
 void testHexToPrintable(TestObjs *objs);
-void testHexRead();
+void testHexReadWrite();
 
 int main(int argc, char **argv) {
   if (argc > 1) {
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
   TEST(testFormatOffset);
   TEST(testFormatByteAsHex);
   TEST(testHexToPrintable);
-  TEST(testHexRead);
+  TEST(testHexReadWrite);
 
   TEST_FINI();
 
@@ -100,10 +100,11 @@ void testHexToPrintable(TestObjs *objs) {
   ASSERT(' ' == hex_to_printable(objs->test_data_1[6]));
 }
 
-void testHexRead(){
+void testHexReadWrite(){
     char buf[17];
     buf[16] = '\0';
     long chars_read = hex_read(buf);
-    printf("chars_read: %lx\n", chars_read);
-    printf("buf: %s\n", buf);
+    //printf("chars_read: %lx\n", chars_read);
+    //printf("buf: %s\n", buf);
+    hex_write_string(buf);
 }
