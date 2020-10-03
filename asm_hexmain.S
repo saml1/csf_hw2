@@ -11,7 +11,7 @@ main:
 .LmainLoop:
     movq $sBuf, %rdi            /*moving sBuf to 1st arg reg*/
     call hex_read               /*calling hex_read*/
-    movq %rax, %rdi*            /*moving return string from hex_read to 1st arg for next call*/
+    movq %rax, %rdi            /*moving return string from hex_read to 1st arg for next call*/
     call hex_write_string
     addq $136, %rsp                /*restore stack pointer*/
 
