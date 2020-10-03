@@ -1,7 +1,7 @@
 /* Hexdump main function, assembly language version */
     .section .data
 sBuf: .zero 17  /*initialize array with room for 17 chars*/
-sOffset: .long, 0 /* initialize offset to 0*/
+
 sOffsetChar: .zero 9 /* char for offset*/
 
 	.section .text
@@ -24,6 +24,8 @@ main:
     call hex_format_offset      /* call hex_format_offset */
     movq %rsi, %rdi             /* moving offsetChar to 1st arg*/
     call hex_write_string
+
+    addq $16, %r12
     popq %rdi
     jmp .LmainLoop
 
