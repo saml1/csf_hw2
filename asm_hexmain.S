@@ -41,6 +41,9 @@ main:
     call hex_write_string
     addq $16, %r12      /* adding 16 to offset*/
 
+    popq %r13
+    popq %r14
+
     jmp .LmainLoop
 
 .LprintHex:
