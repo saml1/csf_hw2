@@ -41,8 +41,8 @@ main:
     call hex_write_string
     addq $16, %r12      /* adding 16 to offset*/
 
-    popq %r13
-    popq %r14
+    /*popq %r13
+    popq %r14*/
 
     jmp .LmainLoop
 
@@ -65,6 +65,8 @@ main:
     call hex_write_string /* TODO: make it write spaces between hexes */
     inc %r13
     popq %r15                   /* now r13 on top of stack, above r14 */
+    popq %r13
+    popq %r14
     jmp .LprintHexTop
 
 .Lend:
