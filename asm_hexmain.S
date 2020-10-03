@@ -2,7 +2,7 @@
     .section .data
 sBuf: .zero 17  /*initialize array with room for 17 chars*/
 
-sOffsetChar: .zero 9 /* char for offset*/
+sOffsetChar: .zero 11 /* char for offset*/
 
 	.section .text
 
@@ -23,9 +23,12 @@ main:
     movq $sOffsetChar, %rsi      /* moving offset char to rsi, 2nd arg*/
     call hex_format_offset      /* call hex_format_offset */
     movq %rsi, %rdi             /* moving offsetChar to 1st arg*/
-    call hex_write_string
+    movq $58, 8(%rsi)           /* moving ':' to OffsetChar*/
+    movq $32, 9(%rsi)           /* moving ' ' to OffsetChar*/
+    movq $0, 10(%rsi)           /* moving '\0' to OffsetChar*/
+    call hex_write_string   /* writing offset*/
 
-    addq $16, %r12
+    addq $16, %r12      /* adding 16 to offset*/
     popq %rdi
     jmp .LmainLoop
 
