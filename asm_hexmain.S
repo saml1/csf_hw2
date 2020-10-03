@@ -1,4 +1,6 @@
 /* Hexdump main function, assembly language version */
+    .section .data
+sBuf: .zero 17  /*initialize array with room for 17 chars*/
 
 	.section .text
 
@@ -7,9 +9,10 @@ main:
     subq $136, %rsp                 /*align stack pointer*/
 
 .LmainLoop:
+    movq $sBuf, %rdi            /*moving sBuf to 1st arg reg*/
     call hex_read               /*calling hex_read*/
-    /*movq %rax, %rdi*/             /*moving return string from hex_read to 1st arg for next call*/
-    /*call hex_write_string*/
+    movq %rax, %rdi*            /*moving return string from hex_read to 1st arg for next call*/
+    call hex_write_string
     addq $136, %rsp                /*restore stack pointer*/
 
 	ret
