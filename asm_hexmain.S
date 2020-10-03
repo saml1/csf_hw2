@@ -22,6 +22,7 @@ main:
     call hex_format_offset      /* call hex_format_offset */
     movq %rsi, %rdi             /* moving offsetChar to 1st arg*/
     call hex_write_string
+    popq %rdi
     jmp .LmainLoop
 
 
