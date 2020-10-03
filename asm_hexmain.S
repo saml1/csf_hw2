@@ -9,6 +9,8 @@ sOffsetChar: .zero 9 /* char for offset*/
 	.globl main
 main:
     subq $136, %rsp                 /*align stack pointer*/
+    pushq %r12
+    movq $0, %r12               /* this is long offset */
 
 .LmainLoop:
     movq $sBuf, %rdi            /*moving sBuf to 1st arg reg*/
@@ -17,7 +19,7 @@ main:
     pushq %rdi                  /* storing buf in stack*/
     cmp $0, %rax                /*comparing chars read to 0*/
     je .Lend                   /*jump to end if chars read = 0*/
-    movq $sOffset, %rdi          /* moving offset to rdi, 1st arg*/
+    movq %r12, %rdi          /* moving offset to rdi, 1st arg*/
     movq $sOffsetChar, %rsi      /* moving offset char to rsi, 2nd arg*/
     call hex_format_offset      /* call hex_format_offset */
     movq %rsi, %rdi             /* moving offsetChar to 1st arg*/
@@ -27,6 +29,7 @@ main:
 
 
 .Lend:
+    popq %r12
     addq $136, %rsp                /*restore stack pointer*/
 	ret
 
