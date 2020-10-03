@@ -29,6 +29,7 @@ main:
 
 
 .Lend:
+    popq %rdi
     popq %r12
     addq $136, %rsp                /*restore stack pointer*/
 	ret
