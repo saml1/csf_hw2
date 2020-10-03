@@ -51,7 +51,8 @@ main:
     movq $sBufPrint, %r15       /* sBufPrint is now in r15 */
     movq %rdi, %r8              /* moving sBuf to r8 */
     call hex_write_string
-    movb (%r8, %r13), 0(%rdi)     /*moving sBuf element r13 to rdi (may be incorrect syntax?)*/
+    movq (%r8, %r13), %rdi
+    /*movb (%r8, %r13), 0(%rdi)*/     /*moving sBuf element r13 to rdi (may be incorrect syntax?)*/
     call hex_to_printable       /*this will put printable val in %rax*/
     movq %rax, (%r15, %r13)     /* putting the printable val in element r13 of sBufPrint */
     movq (%r8, %r13), %rdi      /* moving sBuf element r13 to rdi */
