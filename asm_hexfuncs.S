@@ -75,11 +75,13 @@ hex_format_offset:
     .globl hex_read
 hex_read:
     subq $24, %rsp                 /*align stack pointer*/
+    pushq %rdi
     movq %rdi, %rsi                 /* rdi is data_buf, want it in 2nd param (rsi) when syscall executes*/
     movq $0, %rdi                  /* 0 is STDIN, rdi is first param of read*/
     movq $16, %rdx                  /* rdx is 3rd param (for read is # bytes)*/
     movq $0, %rax                 /* read is system call number 0 */
     syscall                         /* execute system call */
+    popq %rdi
     addq $24, %rsp                /*restore stack pointer*/
     ret
 
