@@ -50,7 +50,8 @@ main:
     pushq %r15                      /* now r15 is on top of stack, above r13, which is above r14 */
     movq $sBufPrint, %r15       /* sBufPrint is now in r15 */
     movq %rdi, %r8              /* moving sBuf to r8 */
-    movb (%r8, %r13), 0(%rdi)     /*moving sBuf element r13 to rdi (may be incorrect syntax?)*/
+    movb 0(%rdi), %r9b
+    movb (%r8, %r13), r9b     /*moving sBuf element r13 to rdi (may be incorrect syntax?)*/
     call hex_to_printable       /*this will put printable val in %rax*/
     movq %rax, (%r15, %r13)     /* putting the printable val in element r13 of sBufPrint */
     movq (%r8, %r13), %rdi      /* moving sBuf element r13 to rdi */
