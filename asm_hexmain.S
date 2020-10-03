@@ -4,13 +4,13 @@
 
 	.globl main
 main:
-    subq $24, %rsp                 /*align stack pointer*/
+    subq $136, %rsp                 /*align stack pointer*/
 
 .LmainLoop:
     call hex_read               /*calling hex_read*/
     movq %rax, %rdi             /*moving return string from hex_read to 1st arg for next call*/
     call hex_write_string
-    addq $24, %rsp                /*restore stack pointer*/
+    addq $136, %rsp                /*restore stack pointer*/
 
 	ret
 
