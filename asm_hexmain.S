@@ -19,6 +19,8 @@ main:
     pushq %rdi                  /* storing buf in stack*/
     cmp $0, %rax                /*comparing chars read to 0*/
     je .Lend                   /*jump to end if chars read = 0*/
+    pushq %r14                  /* r14 will be chars read*/
+    movq %rax, %r14
     movq %r12, %rdi          /* moving offset to rdi, 1st arg*/
     movq $sOffsetChar, %rsi      /* moving offset char to rsi, 2nd arg*/
     call hex_format_offset      /* call hex_format_offset */
@@ -26,10 +28,13 @@ main:
     movq $58, 8(%rsi)           /* moving ':' to OffsetChar*/
     movq $32, 9(%rsi)           /* moving ' ' to OffsetChar*/
     movq $0, 10(%rsi)           /* moving '\0' to OffsetChar*/
-    call hex_write_string   /* writing offset*/
+    call hex_write_string       /* writing offset*/
+    pushq %r13                  /* r13 will start at 0 and go to # chars read */
 
+    popq %r13
     addq $16, %r12      /* adding 16 to offset*/
     popq %rdi
+    popq %r14               /* free chars read val*/
     jmp .LmainLoop
 
 
