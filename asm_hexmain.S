@@ -27,9 +27,10 @@ main:
     movq $32, 9(%rsi)           /* moving ' ' to OffsetChar*/
     movq $0, 10(%rsi)           /* moving '\0' to OffsetChar*/
     call hex_write_string   /* writing offset*/
+    popq %rdi
 
     addq $16, %r12      /* adding 16 to offset*/
-    popq %rdi
+
     jmp .LmainLoop
 
 
