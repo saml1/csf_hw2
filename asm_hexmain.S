@@ -50,8 +50,8 @@ main:
     pushq %r15                      /* now r15 is on top of stack, above r13, which is above r14 */
     movq $sBufPrint, %r15       /* sBufPrint is now in r15 */
     movq %rdi, %r8              /* moving sBuf to r8 */
-    call hex_write_string /* just print debugging - delete */
-    movq $0, %rdi /*testing soething out- delete (changed next line from rdi to dil */
+    /*call hex_write_string*/ /* just print debugging - delete */
+    /*movq $0, %rdi/ /*testing soething out- delete (changed next line from rdi to dil */
     movb (%r8, %r13), %dil  /* this causes it to segfault so i attempted to replace this line w the following line*/
     /*movb (%r8, %r13), 0(%rdi)*/     /*moving sBuf element r13 to rdi (may be incorrect syntax?)*/
     call hex_to_printable       /*this will put printable val in %rax*/
@@ -69,6 +69,7 @@ main:
 
 .Lend:
     popq %rdi
+    popq %r14 /* just added this*/
     popq %r12
     addq $136, %rsp                /*restore stack pointer*/
 	ret
