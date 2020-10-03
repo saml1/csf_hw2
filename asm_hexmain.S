@@ -11,8 +11,8 @@ sOffsetChar: .zero 11 /* char for offset*/
 	.globl main
 main:
     subq $136, %rsp                 /*align stack pointer*/
-    pushq %r12
-    movq $0, %r12               /* this is long offset */
+    pushq %r12                      /* this is not mentioned in stack comments bc it doesn't get popped til very end */
+    movq $0, %r12               /* this is long offset*/
 
 .LmainLoop:
     movq $sBuf, %rdi            /*moving sBuf to 1st arg reg*/
@@ -44,7 +44,7 @@ main:
     jmp .LmainLoop
 
 .LprintHex:
-    pushq %r15                      /* now r15 is on top of stack, above r14, which is above r13 */
+    pushq %r15                      /* now r15 is on top of stack, above r13, which is above r14 */
     movq $sBufPrint, %r15       /* sBufPrint is now in r15 */
     movq %rdi, %r8              /* moving sBuf to r8 */
     movq (%r8, %r13), %rdi     /*moving sBuf element r13 to rdi (may be incorrect syntax?)*/
@@ -52,12 +52,13 @@ main:
     movq %rax, (%r15, %r13)     /* putting the printable val in element r13 of sBufPrint */
     movq (%r8, %r13), %rdi      /* moving sBuf element r13 to rdi */
     movq $sByteChar, %rsi       /* moving hex char to rsi */
-    pushq %r8                   /* now r8 is on top of stack, above r15, r14, r13 */
+    pushq %r8                   /* now r8 is on top of stack, above r15, r13, r14 */
     call hex_format_byte_as_hex /* this will put hex rep of sBuf element r13 in %rsi */
-    popq %r8                    /* now sBuf is in r8 and stack is r15 on top, above r14, then r13 */
+    popq %r8                    /* now sBuf is in r8 and stack is r15 on top, above r13, then r14 */
     movq %rsi, %rdi             /* putting hex rep in 1st arg */
     call hex_write_string /* TODO: make it write spaces between hexes */
     inc %r13
+    popq %r15                   /* now r13 on top of stack, above r14 */
     jmp .LprintHexTop
 
 .Lend:
