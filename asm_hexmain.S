@@ -38,7 +38,7 @@ main:
 .LprintHexTop:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
-
+    movq $sBufPrint, %rdi
     call hex_write_string
     addq $16, %r12      /* adding 16 to offset*/
 
