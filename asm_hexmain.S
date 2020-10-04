@@ -38,13 +38,16 @@ main:
 .LprintHexTop:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
-    pushq %r11
+    cmp $16, %r14           /* comparing chars read to 16*/
+    jl .LprintExtraSpaces       /* jump if chars read < 16 */
+.LprintsBufPrint:
+    pushq %r11                  /* preserving sBufPrint*/
     movq $sSpace, %rdi
     movb $32, 0(%rdi)         /* putting space char in rdi*/
     movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
     call hex_write_string /* printing space */
     /*movq $0, %rdi*/
-    popq %r11
+    popq %r11           /* sBufprint is now back in r11 */
     movq %r11, %rdi         /* moving sBufPrint to rdi*/
     call hex_write_string /* printing sBufPrint*/
     addq $16, %r12      /* adding 16 to offset*/
@@ -80,7 +83,31 @@ main:
     movq %r15, %r11         /* storing sBufPrint in r11*/
     popq %r15                   /* now r13 on top of stack, above r14 */
     movq %r8, %rdi          /*moving sBuf back to rdi for next iteration*/
+
     jmp .LprintHexTop
+
+.LprintExtraSpaces:
+    pushq %r12 /* this will be total # jumps to .Lprint3Spaces*/
+    movq $16, %r12
+    subq %r14, %r12
+.LprintExtraSpacesLoop:
+    cmp $0, %r12 /* comparing 0 to r12 (#jumps)*/
+    jne .Lprint3Spaces  /* jump if r12!=$0 */
+    popq %r12 /* restoring r12 */
+    jmp .LprintsBufPrint /* going back to top to print sBufPrint, finishing off the line */
+
+
+.Lprint3Spaces:
+    pushq %rdi              /* preserving rdi*/
+    movq $sSpace, %rdi
+    movb $32, 0(%rdi)         /* putting space char in rdi*/
+    movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
+    call hex_write_string   /* printing space */
+    call hex_write_string   /* printing space */
+    call hex_write_string   /* printing space */
+    popq %rdi               /* restoring rdi */
+    dec %r12
+    jmp .LprintExtraSpacesLoop
 
 .Lend:
     popq %rdi
