@@ -60,7 +60,7 @@ main:
     movq %rsi, %rdi             /* putting hex rep in 1st arg */
     call hex_write_string /* TODO: make it write spaces between hexes */
     movq $0, %rdi
-    movb $32, %dil         /* putting space char in rdi*/
+    movq $32, %rdi         /* putting space char in rdi*/
     /*movb $0, 1(%rdi) */         /* putting null ter in rdi+1*/
     call hex_write_string
     inc %r13                /*increasing r8 (element) for next iteration*/
