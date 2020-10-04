@@ -60,12 +60,13 @@ main:
     movq $sByteChar, %rsi       /* moving hex char to rsi */
     pushq %r8                   /* now r8 is on top of stack, above r15, r13, r14 */
     call hex_format_byte_as_hex /* this will put hex rep of sBuf element r13 in %rsi */
-    popq %r8                    /* now sBuf is in r8 and stack is r15 on top, above r13, then r14 */
+    /*popq %r8*/                     /* attempting to move this down now sBuf is in r8 and stack is r15 on top, above r13, then r14 */
     movq %rsi, %rdi             /* putting hex rep in 1st arg */
     call hex_write_string /* TODO: make it write spaces between hexes */
     inc %r13
     popq %r15                   /* now r13 on top of stack, above r14 */
-    movq %r8, %rdi          /*also this is wrong- r8 doesn't have sbuf= trace code push and popsthis was done at night so could be bad, but i think is moving sBuf back to rdi*/
+    popq %r8
+    movq %r8, %rdi          /*also this is wrong- r8 doesn't have sbuf- trace code push and popsthis was done at night so could be bad, but i think is moving sBuf back to rdi*/
     jmp .LprintHexTop
 
 .Lend:
