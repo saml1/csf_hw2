@@ -38,7 +38,11 @@ main:
 .LprintHexTop:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
-
+    movq $sSpace, %rdi
+    movb $32, 0(%rdi)         /* putting space char in rdi*/
+    movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
+    call hex_write_string /* printing space */
+    /*movq $0, %rdi*/
     movq %r11, %rdi         /* moving sBufPrint to rdi*/
     call hex_write_string /* printing sBufPrint*/
     addq $16, %r12      /* adding 16 to offset*/
