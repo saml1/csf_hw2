@@ -38,7 +38,7 @@ main:
 .LprintHexTop:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
-    movq %r11, %rdi
+    movq %r11, %rdi         /* moving sBufPrint to rdi*/
     call hex_write_string
     addq $16, %r12      /* adding 16 to offset*/
 
@@ -51,6 +51,7 @@ main:
     pushq %r15                      /* now r15 is on top of stack, above r13, which is above r14 */
     movq $sBufPrint, %r15       /* sBufPrint is now in r15 */
     movq %rdi, %r8              /* moving sBuf to r8 */
+    movq $0, %rdi
     movb (%r8, %r13), %dil  /* moving sbuf element r13 to rdi*/
     call hex_to_printable       /*this will put printable val in %rax*/
     movq %rax, (%r15, %r13)     /* putting the printable val in element r13 of sBufPrint */
@@ -66,7 +67,7 @@ main:
     call hex_write_string
     inc %r13                /*increasing r8 (element) for next iteration*/
     popq %r8                /* r8 is now sBuf */
-    movq %r15, %r11
+    movq %r15, %r11         /* storing sBufPrint in r11*/
     popq %r15                   /* now r13 on top of stack, above r14 */
     movq %r8, %rdi          /*moving sBuf back to rdi for next iteration*/
     jmp .LprintHexTop
