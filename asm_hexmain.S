@@ -38,7 +38,7 @@ main:
 .LprintHexTop:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
-    movq $sBufPrint, %rdi
+    movq %r11, %rdi
     call hex_write_string
     addq $16, %r12      /* adding 16 to offset*/
 
@@ -66,6 +66,7 @@ main:
     call hex_write_string
     inc %r13                /*increasing r8 (element) for next iteration*/
     popq %r8                /* r8 is now sBuf */
+    moq %r15, %r11
     popq %r15                   /* now r13 on top of stack, above r14 */
     movq %r8, %rdi          /*moving sBuf back to rdi for next iteration*/
     jmp .LprintHexTop
