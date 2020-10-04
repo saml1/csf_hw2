@@ -59,9 +59,10 @@ main:
     call hex_format_byte_as_hex /* this will put hex rep of sBuf element r13 in %rsi */
     movq %rsi, %rdi             /* putting hex rep in 1st arg */
     call hex_write_string /* TODO: make it write spaces between hexes */
-    /*movb $32, 0(%rdi) */         /* putting space char in rdi*/
-    /*movb $0, 1(%rdi)   */       /* putting null ter in rdi+1*/
-    /*call hex_write_string*/
+    movq $0, %rdi
+    movb $32, 0(%rdi)         /* putting space char in rdi*/
+    movb $0, 1(%rdi)          /* putting null ter in rdi+1*/
+    call hex_write_string
     inc %r13                /*increasing r8 (element) for next iteration*/
     popq %r8                /* r8 is now sBuf */
     popq %r15                   /* now r13 on top of stack, above r14 */
