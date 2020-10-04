@@ -61,7 +61,7 @@ main:
     call hex_write_string /* TODO: make it write spaces between hexes */
     movq $0, %rdi
     movq $32, %rdi         /* putting space char in rdi*/
-    /*movb $0, 1(%rdi) */         /* putting null ter in rdi+1*/
+    movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
     call hex_write_string
     inc %r13                /*increasing r8 (element) for next iteration*/
     popq %r8                /* r8 is now sBuf */
