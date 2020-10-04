@@ -3,7 +3,7 @@
 sBuf: .zero 17  /*initialize array with room for 17 chars*/
 sBufPrint: .zero 17 /*array with room for 17 chars, will store printable chars */
 sByteChar: .zero 3 /*array with room for 3 chars, this is hex rep of long val */
-sSpace: .zero 2 /* char array with space then null ter*/
+sSpace: .zero 2 /* char array with space (or newline) then null ter*/
 
 sOffsetChar: .zero 11 /* char for offset*/
 
@@ -39,9 +39,12 @@ main:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
     movq %r11, %rdi         /* moving sBufPrint to rdi*/
-    call hex_write_string
+    call hex_write_string /* printing sBufPrint*/
     addq $16, %r12      /* adding 16 to offset*/
-
+    movq $sSpace, %rdi
+    movb $10, 0(%rdi)         /* putting newline in rdi*/
+    movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
+    call hex_write_string /* printing newline */
     popq %r13
     popq %r14
 
@@ -60,11 +63,11 @@ main:
     pushq %r8                   /* now r8 is on top of stack, above r15, r13, r14 */
     call hex_format_byte_as_hex /* this will put hex rep of sBuf element r13 in %rsi */
     movq %rsi, %rdi             /* putting hex rep in 1st arg */
-    call hex_write_string /* TODO: make it write spaces between hexes */
+    call hex_write_string /* printing individual hex rep*/
     movq $sSpace, %rdi
     movb $32, 0(%rdi)         /* putting space char in rdi*/
     movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
-    call hex_write_string
+    call hex_write_string /* printing space */
     inc %r13                /*increasing r8 (element) for next iteration*/
     popq %r8                /* r8 is now sBuf */
     movq %r15, %r11         /* storing sBufPrint in r11*/
