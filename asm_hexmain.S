@@ -38,10 +38,11 @@ main:
 .LprintHexTop:
     cmp %r14,%r13               /* seeing if index < chars read*/
     jl .LprintHex               /* if so, jump to .LprintHex */
+    pushq %r11
     cmp $16, %r14           /* comparing chars read to 16*/
     jl .LprintExtraSpaces       /* jump if chars read < 16 */
 .LprintsBufPrint:
-    pushq %r11                  /* preserving sBufPrint*/
+    /*pushq %r11*/                  /* preserving sBufPrint*/
     movq $sSpace, %rdi
     movb $32, 0(%rdi)         /* putting space char in rdi*/
     movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
