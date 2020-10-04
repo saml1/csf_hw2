@@ -103,7 +103,13 @@ main:
     movb $32, 0(%rdi)         /* putting space char in rdi*/
     movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
     call hex_write_string   /* printing space */
+    movq $sSpace, %rdi
+    movb $32, 0(%rdi)         /* putting space char in rdi*/
+    movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
     call hex_write_string   /* printing space */
+    movq $sSpace, %rdi
+    movb $32, 0(%rdi)         /* putting space char in rdi*/
+    movb $0, 1(%rdi)         /* putting null ter in rdi+1*/
     call hex_write_string   /* printing space */
     popq %rdi               /* restoring rdi */
     dec %r12
