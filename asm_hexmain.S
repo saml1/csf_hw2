@@ -1,3 +1,8 @@
+/*
+Sam Lipschitz
+slipsch3@jhu.edu
+*/
+
 /* Hexdump main function, assembly language version */
     .section .data
 sBuf: .zero 17  /*initialize array with room for 17 chars*/

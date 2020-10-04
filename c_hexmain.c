@@ -3,7 +3,6 @@
 //Sam Lipschitz
 //slipsch3@jhu.edu
 #include "hexfuncs.h"  // this is the only header file which may be included!
-//#include <stdio.h> //DELETE BEFORE SUBMITTING (just using for print debugging)
 
     void writeFinalDump(long numChars, char buf[], long offset_count, char buf_offset[], char byte_in_hex[]){
         buf[numChars] = '\0';
@@ -39,7 +38,6 @@
         if(chars_read == 0){
             return 1;
         }
-        //buf_string[chars_read] = '\0';
 
         while(chars_read > 0){ //While ! eof:
             for(int i = 0; i < chars_read; i++){ //add chars from buf_string to buf_string_final and keep track of # chars with chars_in_final
@@ -52,7 +50,6 @@
             chars_in_final = chars_read;
             while(chars_in_final < 16){
                 chars_read = hex_read(buf_string); //read input to buf_string, store in chars_read
-                //buf_string[chars_read] = '\0';
                 if(chars_read == 0){
                     break;
                 }
@@ -103,17 +100,11 @@
             }
             chars_read = hex_read(buf_string);
             if(chars_read == 0 && chars_in_final == 16){
-                /*printf("buf_string_final: %s\n", buf_string_final);
-                printf("buf_string: %s\n", buf_string);
-                printf("chars_read: %ld\n", chars_read);
-                printf("chars_in_final: %ld\n", chars_in_final);*/
+
                 return 0;
                 break;
             }
-            /*printf("buf_string_final: %s\n", buf_string_final);
-            printf("buf_string: %s\n", buf_string);
-            printf("chars_read: %ld\n", chars_read);
-            printf("chars_in_final: %ld\n", chars_in_final);*/
+
         }
         if(chars_in_final != 16 || (chars_in_final == 16 && chars_read == 0)){
             writeFinalDump(chars_in_final, buf_string_final, offset_count, buf_offset,byte_in_hex);
@@ -123,15 +114,11 @@
             while(buf_string[size] != '\0'){
                 size++;
             }
-            //size++;
-            //printf("size: %d\n", size);
+
             writeFinalDump(size, buf_string, offset_count, buf_offset,byte_in_hex);
             return 0;
         }
-        /*printf("buf_string_final: %s\n", buf_string_final);
-        printf("buf_string: %s\n", buf_string);
-        printf("chars_read: %ld\n", chars_read);
-        printf("chars_in_final: %ld\n", chars_in_final);*/
+
 
     }
 
